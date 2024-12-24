@@ -33,6 +33,10 @@ def main():
         for updates in updateable:
             updates.update(dt)
         for asteroid in asteroids:
+            for shot in shots:
+                if asteroid.checkCollision(shot):
+                    shot.kill()
+                    asteroid.kill()
             if asteroid.checkCollision(player):
                 print("Game over!")
                 sys.exit()
